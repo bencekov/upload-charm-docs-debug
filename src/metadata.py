@@ -29,7 +29,8 @@ def get(path: Path) -> types_.Metadata:
 
     """
     logging.info(f"dir name: {path}\n")
-    logging.info(f"dir contents: {path.glob('**')}\n")
+    content = list(path.glob('**'))
+    logging.info(f"dir contents: {content}\n")
     metadata_yaml = path / METADATA_FILENAME
     if not metadata_yaml.is_file():
         raise InputError(f"Could not find {METADATA_FILENAME} file, looked in folder: {path}")
