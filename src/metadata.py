@@ -3,6 +3,7 @@
 
 """Module for parsing metadata.yaml file."""
 import logging
+import inspect
 from pathlib import Path
 
 import yaml
@@ -29,8 +30,11 @@ def get(path: Path) -> types_.Metadata:
 
     """
     logging.info(f"dir name: {path}\n")
-    content = list(path.glob('**/*'))
+    content = list(path.glob('metadata.yaml'))
     logging.info(f"dir contents: {content}\n")
+    caller = inspect.currentframe().f_back.f_code.co_name
+    logging.info(f"caller function: {caller}\n")
+
     metadata_yaml = path / METADATA_FILENAME
     if not metadata_yaml.is_file():
         raise InputError(f"Could not find {METADATA_FILENAME} file, looked in folder: {path}")
