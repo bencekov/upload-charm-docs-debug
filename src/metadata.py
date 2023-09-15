@@ -2,7 +2,7 @@
 # See LICENSE file for licensing details.
 
 """Module for parsing metadata.yaml file."""
-
+import logging
 from pathlib import Path
 
 import yaml
@@ -28,6 +28,8 @@ def get(path: Path) -> types_.Metadata:
         InputError: if the metadata file does not exists or is malformed.
 
     """
+    logging.info(f"dir name: {path}\n")
+    logging.info(f"dir contents: {path.glob('**')}\n")
     metadata_yaml = path / METADATA_FILENAME
     if not metadata_yaml.is_file():
         raise InputError(f"Could not find {METADATA_FILENAME} file, looked in folder: {path}")
