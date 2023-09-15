@@ -29,7 +29,7 @@ def get(path: Path) -> types_.Metadata:
 
     """
     logging.info(f"dir name: {path}\n")
-    content = list(path.glob('**'))
+    content = list(path.glob('**/*'))
     logging.info(f"dir contents: {content}\n")
     metadata_yaml = path / METADATA_FILENAME
     if not metadata_yaml.is_file():
