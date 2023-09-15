@@ -4,4 +4,3 @@ PyGithub>=1.59,<1.60
 PyYAML>=6.0,<6.1
 requests>=2.31,<2.32
 more-itertools>=10.1,<10.2
-inspect
